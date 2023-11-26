@@ -35,13 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Lingu_ish_tic.apps.LinguIshTicConfig',
     # Django REST Framework
     'rest_framework',
     # CORS Headers
     'corsheaders',
     # Custom apps
     'accounts.apps.AccountsConfig',
+    'chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE = [

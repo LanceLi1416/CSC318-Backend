@@ -1,6 +1,6 @@
 from rest_framework import generics
+from rest_framework import permissions
 from rest_framework import views, status
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .models import User
@@ -18,7 +18,7 @@ class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class FollowUserView(views.APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, user_id):
         try:
