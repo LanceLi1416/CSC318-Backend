@@ -4,6 +4,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.pagination import PageNumberPagination
 
 from accounts.models import User
+from notifications.models import Notification
 from .models import WorldChatMessage, DirectMessage
 from .serializers import WorldChatMessageSerializer, DirectMessageSerializer
 
@@ -42,3 +43,11 @@ class DirectMessageListCreateView(generics.ListCreateAPIView):
         if receiver == self.request.user:
             raise ValidationError('You cannot send a message to yourself.')
         serializer.save(sender=self.request.user, receiver=receiver)
+
+        # Create a notification for the receiver
+        Notification.objects.create(
+            recipient=receiver,
+            message=f'{self.request.user.username} sent you a direct message',
+            notification_type=Notification.DIRECT_MESSAGE,
+            link=f'/messages/{self.request.user.id}/'
+        )

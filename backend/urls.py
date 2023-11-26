@@ -28,4 +28,6 @@ urlpatterns = ([path('admin/', admin.site.urls),
                 path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
                 path('api/', include('accounts.urls')),
                 path('chat/', include('chat.urls')),
+                path('forum/', include('forum.urls')),
+                path('notifications/', include('notifications.urls'))
                 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))

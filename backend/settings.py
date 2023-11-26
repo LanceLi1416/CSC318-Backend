@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     # Custom apps
     'accounts.apps.AccountsConfig',
     'chat.apps.ChatConfig',
+    'forum.apps.ForumConfig',
+    'notifications.apps.NotificationsConfig',
 ]
 
 MIDDLEWARE = [
